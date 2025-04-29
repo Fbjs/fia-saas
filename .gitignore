@@ -1,6 +1,14 @@
+# Node modules
 node_modules/
-.env
-session/
-.wwebjs_auth/
-.wwebjs_cache/
 
+# Variables de entorno
+.env
+
+# Sesiones de WhatsApp
+.session/
+.wwebjs_auth/
+wwebjs_cache/
+
+# Otros
+.DS_Store
+npm-debug.log
