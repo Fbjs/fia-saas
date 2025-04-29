@@ -79,3 +79,36 @@ git clone https://github.com/tu_usuario/fia-saas.git
 cd fia-saas
 npm install
 npm run dev
+
+
+
+## Estructura del Proyecto
+
+```plaintext
+fia-saas/
+│
+├── src/
+│   ├── config/
+│   │   ├── db.js                 # Configuración de conexión a MongoDB
+│   │   └── openai.js              # Configuración de la API de OpenAI
+│   ├── controllers/
+│   │   ├── whatsappController.js  # Lógica para manejar mensajes de WhatsApp
+│   │   └── userController.js      # Manejo de usuarios y tokens
+│   ├── services/
+│   │   ├── whatsappService.js     # Integración con whatsapp-web.js
+│   │   └── chatgptService.js      # Servicio que conecta a ChatGPT
+│   ├── models/
+│   │   ├── userModel.js           # Modelo de usuarios (tokens, whatsapp, etc.)
+│   │   └── conversationModel.js   # Modelo de conversaciones
+│   ├── routes/
+│   │   ├── whatsappRoutes.js      # Rutas de la API para WhatsApp
+│   │   └── userRoutes.js          # Rutas de la API para usuarios
+│   ├── utils/
+│   │   └── tokenManager.js        # Lógica para controlar consumo de tokens
+│   └── app.js                     # Montaje de la aplicación Express
+│
+├── .env                            # Variables de entorno
+├── .gitignore                      # Ignora node_modules, .env, sesiones
+├── package.json
+├── README.md
+├── index.js                        # Entrada principal (importa app.js)
