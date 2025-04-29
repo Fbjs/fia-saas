@@ -2,13 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Rutas
-// (Las rutas se importarán más adelante)
-// const userRoutes = require('./routes/userRoutes');
-// app.use('/api/users', userRoutes);
+// Aquí agregamos las rutas
+const conversationRoutes = require('./routes/conversationRoutes');
+app.use('/api/conversations', conversationRoutes);
 
 module.exports = app;
