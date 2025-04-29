@@ -1,7 +1,7 @@
 # FIA - Fast Intelligent Assistant 🚀
 
 **FIA** es un SaaS que automatiza la atención de clientes en WhatsApp utilizando inteligencia artificial (ChatGPT).  
-Gestiona la conexión de WhatsApp Web, responde automáticamente a los mensajes recibidos, administra el consumo de tokens por respuesta, y ofrece planes de suscripción para recargar tokens.
+Gestiona la conexión de WhatsApp Web, responde automáticamente a los mensajes recibidos, administra el consumo de tokens por respuesta, y ofrece planes de suscripción mensual.
 
 ---
 
@@ -10,7 +10,7 @@ Gestiona la conexión de WhatsApp Web, responde automáticamente a los mensajes 
 - Conecta una cuenta de WhatsApp Business.
 - Lee y responde automáticamente a los mensajes entrantes usando ChatGPT.
 - Descuenta tokens por cada respuesta enviada.
-- Gestiona usuarios, planes de suscripción y control de tokens.
+- Gestiona usuarios, tokens y planes de suscripción.
 - Proporciona un dashboard para controlar toda la actividad.
 
 ---
@@ -21,7 +21,7 @@ Gestiona la conexión de WhatsApp Web, responde automáticamente a los mensajes 
 - [ ] Crear repositorio en GitHub: `fia-saas`
 - [ ] Crear estructura de carpetas `/src`
 - [ ] Configurar `package.json` e instalar dependencias básicas
-- [ ] Crear `.env` para credenciales sensibles
+- [ ] Crear archivo `.env` para credenciales sensibles
 
 ### 2. Integración WhatsApp Web
 - [ ] Configurar `whatsapp-web.js` y conexión mediante QR
@@ -54,16 +54,16 @@ Gestiona la conexión de WhatsApp Web, responde automáticamente a los mensajes 
 
 ### 9. Extras Futuras
 - [ ] Prompts personalizados
-- [ ] Multi-agente
+- [ ] Multi-agente (varios WhatsApp por cuenta)
 - [ ] Reportes descargables
 - [ ] Sistema de referidos
 
 ---
 
-## 🧠 Stack Tecnológico
+## 🧐 Stack Tecnológico
 
 - **Backend:** Node.js (Express)
-- **WhatsApp Integration:** whatsapp-web.js
+- **Integración WhatsApp:** whatsapp-web.js
 - **IA:** OpenAI (ChatGPT API)
 - **Base de datos:** MongoDB Atlas
 - **Frontend:** Vue.js o Next.js
@@ -72,45 +72,82 @@ Gestiona la conexión de WhatsApp Web, responde automáticamente a los mensajes 
 
 ---
 
-## 🚀 Instalación rápida (cuando esté listo)
+## 🚀 Instalación rápida
 
 ```bash
 git clone https://github.com/tu_usuario/fia-saas.git
 cd fia-saas
 npm install
 npm run dev
-
 ```
 
+---
 
-## Estructura del Proyecto
+## ⚙️ Configuración del Entorno y Estructura del Proyecto
+
+### 📄 Archivo `.env` (Variables de entorno necesarias)
+
+Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+
+```dotenv
+# Puerto del servidor
+PORT=3000
+
+# MongoDB
+MONGO_URI=mongodb+srv://usuario:contraseña@tucluster.mongodb.net/fia?retryWrites=true&w=majority
+
+# OpenAI
+OPENAI_API_KEY=sk-xxxxxx
+
+# JWT
+SESSION_SECRET=clave_secreta_para_firmar_tokens
+
+# Stripe
+STRIPE_SECRET_KEY=sk_test_xxxxxx
+
+# WhatsApp
+WHATSAPP_SESSION_NAME=fia-session
+```
+
+- `PORT`: puerto donde corre el backend Express.
+- `MONGO_URI`: conexión a la base de datos MongoDB Atlas.
+- `OPENAI_API_KEY`: API key para utilizar ChatGPT.
+- `SESSION_SECRET`: clave secreta para firmar y verificar tokens JWT.
+- `STRIPE_SECRET_KEY`: clave privada para integrar pagos (Stripe).
+- `WHATSAPP_SESSION_NAME`: nombre para guardar la sesión de WhatsApp.
+
+---
+
+### 📂 Estructura del Proyecto
 
 ```plaintext
 fia-saas/
-│
+|
 ├── src/
 │   ├── config/
 │   │   ├── db.js                 # Configuración de conexión a MongoDB
 │   │   └── openai.js              # Configuración de la API de OpenAI
 │   ├── controllers/
-│   │   ├── whatsappController.js  # Lógica para manejar mensajes de WhatsApp
+│   │   ├── whatsappController.js  # Manejo de mensajes de WhatsApp
 │   │   └── userController.js      # Manejo de usuarios y tokens
 │   ├── services/
 │   │   ├── whatsappService.js     # Integración con whatsapp-web.js
-│   │   └── chatgptService.js      # Servicio que conecta a ChatGPT
+│   │   └── chatgptService.js      # Servicio para comunicación con ChatGPT
 │   ├── models/
-│   │   ├── userModel.js           # Modelo de usuarios (tokens, whatsapp, etc.)
+│   │   ├── userModel.js           # Modelo de usuarios
 │   │   └── conversationModel.js   # Modelo de conversaciones
 │   ├── routes/
-│   │   ├── whatsappRoutes.js      # Rutas de la API para WhatsApp
-│   │   └── userRoutes.js          # Rutas de la API para usuarios
+│   │   ├── whatsappRoutes.js      # Endpoints para WhatsApp
+│   │   └── userRoutes.js          # Endpoints para usuarios
 │   ├── utils/
 │   │   └── tokenManager.js        # Lógica para controlar consumo de tokens
-│   └── app.js                     # Montaje de la aplicación Express
+│   └── app.js                     # Montaje principal de la aplicación Express
 │
-├── .env                            # Variables de entorno
-├── .gitignore                      # Ignora node_modules, .env, sesiones
+├── .env                            # Variables de entorno (NO subir a GitHub)
+├── .gitignore                      # Ignorar node_modules, .env, sesiones
+├── index.js                        # Entrada principal del servidor
 ├── package.json
-├── README.md
-├── index.js                        # Entrada principal (importa app.js)
+└── README.md
 ```
+
+
