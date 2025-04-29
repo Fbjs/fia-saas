@@ -1,23 +1,31 @@
-const User = require('../models/userModel');
-
 /**
- * Obtener los datos de un usuario por su ID.
+ * Actualizar datos de un usuario por su ID (tokens, plan, estado).
  */
-async function getUserById(req, res) {
+async function updateUser(req, res) {
     try {
         const { id } = req.params;
+        const { tokens, plan, active } = req.body;
 
-        const user = await User.findById(id).select('-__v');
+        const user = await User.findById(id);
 
         if (!user) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
-        res.status(200).json(user);
+        if (tokens !== undefined) user.tokens = tokens;
+        if (plan) user.plan = plan;
+        if (active !== undefined) user.active = active;
+
+        await user.save();
+
+        res.status(200).json({ message: 'Usuario actualizado correctamente', user });
     } catch (error) {
-        console.error('❌ Error al obtener usuario:', error.message);
-        res.status(500).json({ message: 'Error al obtener usuario' });
+        console.error('❌ Error al actualizar usuario:', error.message);
+        res.status(500).json({ message: 'Error al actualizar usuario' });
     }
 }
 
-module.exports = { getUserById };
+module.exports = { 
+    getUserById,
+    updateUser // 👈 Exportamos también esta nueva función
+};
