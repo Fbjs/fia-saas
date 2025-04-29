@@ -121,35 +121,36 @@ WHATSAPP_SESSION_NAME=fia-session
 ### 📂 Estructura del Proyecto
 
 ```plaintext
+
 fia-saas/
 |
 ├── src/
 │   ├── config/
-│   │   ├── db.js                  # Configuración de conexión a MongoDB
-│   │   └── openai.js               # Configuración de la API de OpenAI
+│   │   ├── db.js                    # Conexión a MongoDB
+│   │   └── openai.js                 # Conexión a la API de OpenAI
 │   ├── controllers/
-│   │   ├── whatsappController.js   # Controlador para conexión y gestión de WhatsApp
-│   │   ├── userController.js       # Controlador para usuarios y tokens
-│   │   └── conversationController.js  # Controlador para listar conversaciones guardadas
+│   │   ├── whatsappController.js     # Manejo de mensajes de WhatsApp
+│   │   ├── userController.js         # Manejo de usuarios (listar, ver detalle)
+│   │   └── conversationController.js # Manejo de conversaciones
 │   ├── services/
-│   │   ├── whatsappService.js      # Servicio para manejar WhatsApp Web JS
-│   │   └── chatgptService.js       # Servicio para comunicarse con la API de ChatGPT
+│   │   ├── whatsappService.js        # Integración con whatsapp-web.js
+│   │   └── chatgptService.js         # Servicio de conexión a ChatGPT
 │   ├── models/
-│   │   ├── userModel.js            # Modelo de usuarios (WhatsApp, tokens, plan)
-│   │   └── conversationModel.js    # Modelo de conversaciones (mensajes y respuestas)
+│   │   ├── userModel.js               # Modelo de usuario (tokens, whatsapp, plan)
+│   │   └── conversationModel.js       # Modelo de conversaciones
 │   ├── routes/
-│   │   ├── whatsappRoutes.js       # Rutas para gestión de WhatsApp
-│   │   ├── userRoutes.js           # Rutas para gestión de usuarios (futuro)
-│   │   └── conversationRoutes.js   # Rutas para listar conversaciones
+│   │   ├── whatsappRoutes.js          # Rutas para WhatsApp
+│   │   ├── userRoutes.js              # Rutas para usuarios
+│   │   └── conversationRoutes.js      # Rutas para conversaciones
 │   ├── utils/
-│   │   └── tokenManager.js         # (Pendiente de implementar) Gestión avanzada de tokens
-│   └── app.js                      # Montaje principal de la aplicación Express
+│   │   └── tokenManager.js            # (Pendiente) Utilidades para control de tokens
+│   └── app.js                         # Montaje principal de Express
 │
-├── .env                             # Variables de entorno (NO subir a GitHub)
-├── .gitignore                       # Ignorar node_modules, .env, sesiones
-├── index.js                         # Entrada principal del servidor
-├── package.json                     # Configuraciones y scripts de npm
-└── README.md                        # Documentación del proyecto
+├── .env                                # Variables de entorno (NO subir a GitHub)
+├── .gitignore                          # Ignorar node_modules, .env, sesiones de WhatsApp
+├── index.js                            # Entrada principal del servidor
+├── package.json                        # Scripts y dependencias de npm
+└── README.md                           # Documentación del proyecto
 
 ```
 
