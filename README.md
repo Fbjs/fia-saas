@@ -80,6 +80,7 @@ cd fia-saas
 npm install
 npm run dev
 
+```
 
 
 ## Estructura del Proyecto
@@ -112,3 +113,4 @@ fia-saas/
 ├── package.json
 ├── README.md
 ├── index.js                        # Entrada principal (importa app.js)
+```
