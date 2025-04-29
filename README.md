@@ -125,29 +125,32 @@ fia-saas/
 |
 ├── src/
 │   ├── config/
-│   │   ├── db.js                 # Configuración de conexión a MongoDB
-│   │   └── openai.js              # Configuración de la API de OpenAI
+│   │   ├── db.js                  # Configuración de conexión a MongoDB
+│   │   └── openai.js               # Configuración de la API de OpenAI
 │   ├── controllers/
-│   │   ├── whatsappController.js  # Manejo de mensajes de WhatsApp
-│   │   └── userController.js      # Manejo de usuarios y tokens
+│   │   ├── whatsappController.js   # Controlador para conexión y gestión de WhatsApp
+│   │   ├── userController.js       # Controlador para usuarios y tokens
+│   │   └── conversationController.js  # Controlador para listar conversaciones guardadas
 │   ├── services/
-│   │   ├── whatsappService.js     # Integración con whatsapp-web.js
-│   │   └── chatgptService.js      # Servicio para comunicación con ChatGPT
+│   │   ├── whatsappService.js      # Servicio para manejar WhatsApp Web JS
+│   │   └── chatgptService.js       # Servicio para comunicarse con la API de ChatGPT
 │   ├── models/
-│   │   ├── userModel.js           # Modelo de usuarios
-│   │   └── conversationModel.js   # Modelo de conversaciones
+│   │   ├── userModel.js            # Modelo de usuarios (WhatsApp, tokens, plan)
+│   │   └── conversationModel.js    # Modelo de conversaciones (mensajes y respuestas)
 │   ├── routes/
-│   │   ├── whatsappRoutes.js      # Endpoints para WhatsApp
-│   │   └── userRoutes.js          # Endpoints para usuarios
+│   │   ├── whatsappRoutes.js       # Rutas para gestión de WhatsApp
+│   │   ├── userRoutes.js           # Rutas para gestión de usuarios (futuro)
+│   │   └── conversationRoutes.js   # Rutas para listar conversaciones
 │   ├── utils/
-│   │   └── tokenManager.js        # Lógica para controlar consumo de tokens
-│   └── app.js                     # Montaje principal de la aplicación Express
+│   │   └── tokenManager.js         # (Pendiente de implementar) Gestión avanzada de tokens
+│   └── app.js                      # Montaje principal de la aplicación Express
 │
-├── .env                            # Variables de entorno (NO subir a GitHub)
-├── .gitignore                      # Ignorar node_modules, .env, sesiones
-├── index.js                        # Entrada principal del servidor
-├── package.json
-└── README.md
+├── .env                             # Variables de entorno (NO subir a GitHub)
+├── .gitignore                       # Ignorar node_modules, .env, sesiones
+├── index.js                         # Entrada principal del servidor
+├── package.json                     # Configuraciones y scripts de npm
+└── README.md                        # Documentación del proyecto
+
 ```
 
 
